@@ -13,6 +13,6 @@ class Post < ApplicationRecord
    end 
 
    def normal
-   	 "general thing"
+   	 "general thing lop"
    end 
 end
