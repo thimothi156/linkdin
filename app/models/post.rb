@@ -3,4 +3,8 @@ class Post < ApplicationRecord
 	has_many_attached :images
 	has_many :likes,as: :likeable
 	has_many :comments
+    delegate :first_name,to: :user,prefix:true
+   def welcome
+   	"good"
+   end 
 end
