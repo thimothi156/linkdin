@@ -7,4 +7,12 @@ class Post < ApplicationRecord
    def welcome
    	"good"
    end 
+
+   def people
+   	puts "welcome"
+   end 
+
+   def normal
+   	 "general thing"
+   end 
 end
