@@ -1,10 +1,16 @@
 class ApplicationController < ActionController::API
 	include JwtToken
-	before_action :authentication
+	before_action :authentication,except:[:not_found]
 
 	rescue_from ActiveRecord::RecordNotFound do |p|
 		 render json:{errors:[message:"No record found"]},status: :not_found
 	end 
+	  rescue_from ActionController::RoutingError, with: :handle_routing_error
+
+
+  def not_found
+    render json: { error: 'Route not found' }, status: :not_found
+ end
 
 	def authentication
         token = request.headers["token"]

@@ -10,8 +10,8 @@ class PostsController < ApplicationController
 	end 
 
 	def index
-      posts = Post.order(created_at:"DESC").eager_load(:user).left_joins(:comments, :likes) .select("posts.*, COUNT(DISTINCT comments.id) AS comments_count, COUNT(DISTINCT likes.id) AS likes_count").group("posts.id,users.id") .page(params[:page]|| 1) .per(15)
-     render json: { posts: PostsSerializer.new(posts) }, status: :ok
+      posts = Post.all#order(created_at:"DESC").eager_load(:user).left_joins(:comments, :likes) .select("posts.*, COUNT(DISTINCT comments.id) AS comments_count, COUNT(DISTINCT likes.id) AS likes_count").group("posts.id,users.id") .page(params[:page]|| 1) .per(15)
+     # render json: { posts: PostsSerializer.new(posts) }, status: :ok
      end
 
 	def user_posts
